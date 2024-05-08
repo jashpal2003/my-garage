@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_vehicle_form" model="ir.ui.view">
+        <field name="name">view.vehicle.form</field>
+        <field name="model">garage.vehicle</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="brand_id"/>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_vehicle_tree" model="ir.ui.view">
+        <field name="name">view.vehicle.tree</field>
+        <field name="model">garage.vehicle</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="brand_id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicle</field>
+        <field name="res_model">garage.vehicle</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_vehicle" action="action_vehicle" parent="menu_garage"/>
+
+    <record id="view_brand_form" model="ir.ui.view">
+        <field name="name">view.brand.form</field>
+        <field name="model">garage.brand</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+<!--                        <field name="company_id"/>-->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+
+
+
+    </record>
+
+    <record id="view_brand_tree" model="ir.ui.view">
+        <field name="name">view.brand.tree</field>
+        <field name="model">garage.brand</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+<!--                <field name="company_id"/>-->
+            </tree>
+        </field>
+    </record>
+
+
+
+
+</odoo>

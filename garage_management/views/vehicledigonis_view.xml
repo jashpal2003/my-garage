@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id = "view_vehicledigonis_form"  model = "ir.ui.view">
+        <field name = "name">view.vehicledigonis.form</field>
+        <field name="model">garage.vehicledigonis</field>
+        <field name = "arch" type = "xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name = "vehicle_problem"/>
+                        <field name = "vehicle_company"/>
+<!--                            <field name = "vehicle_brand"/>-->
+                        <field name ="vehicle_model"/>
+
+<!--                        <field name="service_needed"/>-->
+
+                    </group>
+                    <notebook>
+                        <page name = "service_needed">
+                            <field name = "service_needed"/>
+                        </page>
+                        <page name = "parts_needed">
+                            <field name = "parts_needed"/>
+
+                        </page>
+                    </notebook>
+                    <group>
+                        <field name = "parts_price" string = "total price of parts"/>
+                        <field name = "service_price" string="total price of service"/>
+                        <field name = "total_amount" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id ="view_vehicledigonis_tree" model = "ir.ui.view">
+        <field name= "name">view.vehicledigonis.tree</field>
+        <field name="model">garage.vehicledigonis</field>
+        <field name = "arch" type = "xml">
+            <tree>
+
+                <field name = "name"/>
+                <field name ="vehicle_company"/>
+                <field name ="vehicle_model"/>
+                <field name = "vehicle_problem"/>
+                <field name = "parts_price" string = "price for parts"/>
+                <field name = "service_price" string = "price for service"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id = "action_vehicledigonis" model="ir.actions.act_window">
+        <field name="name">vehicledigonis</field>
+        <field name = "res_model">garage.vehicledigonis</field>
+        <field name ="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_vehicledigonis" action="action_vehicledigonis" parent ="menu_garage"/>
+
+
+
+</odoo>
+

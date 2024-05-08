@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <odoo>
+        <record id = "view_customer_form" model = "ir.ui.view">
+            <field name = 'name'>view.customer.form</field>
+            <field name="model">garage.customer</field>
+            <field name ="arch" type = "xml">
+                    <form>
+                        <header><h1>Customer form</h1>
+
+                    <field name="state" widget="statusbar" options="{'clickable':1}" statusbar_visible="applied,joined,left"/></header>
+<!--                        <field name = "state" widget = "statusbar" options = "{'clickable':1" statusbar_visible = "applied,joined,left"/>-->
+                        <sheet>
+                            <widget name = "web_ribbon" title = "Active" bg_color = "bg-danger" attrs = "{'invisible':[('active','=',True)]}"/>
+                            <widget name = "web_ribbon" title = "Archived" bg_color = "bg-success" attrs = "{'invisible':[('active','=',False)]}"/>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <header>
+                                        <h3>Detail  of customer</h3>
+
+                                    </header>
+
+                                    <group>
+                                        <field name="name_title"/>
+                                        <field name="name"/>
+
+                                        <field name="age"/>
+                                        <field name="active" invisible = "1"/>
+                                        <field name="birthdate"/>
+                                        <field name="gender"/>
+                                        <field name="customer_code"/>
+
+<!--                                        <field name="password" password = "*"/>-->
+                                        <field name="email" widget = "email"/>
+<!--                                        <field name="url" string = "website" widget = "url"/>-->
+
+                                        <field name="priority" widget = "priority"/>
+
+                                        <field name="phone" widget = "phone/"/>
+<!--                                        <field name="sign_in"/>-->
+                                        <field name = "howufind"/>
+                                    </group>
+                                </div>
+                                <div class="col col-md-6">
+                                      <header>
+                                        <h3>Detail  of Vehicle</h3>
+
+                                    </header>
+                                        <group>
+<!--                                            company name -->
+<!--                                            model name-->
+<!--                                            vehicle type-->
+                                            <field name ="description_of_problem"/>
+<!--                                            service u need-->
+                                             <field name="document" filename = "file_name"/>
+                                            <field name="photo" widget="image"/>
+                                            <field name="company_id"/>
+                                                <field name="vehicle_model_id" string="Vehicle Brand"/>
+
+
+
+
+                                        </group>
+                                </div>
+
+                            </div>
+                            <notebook>
+
+                            </notebook>
+
+                        </sheet>
+                    </form>
+            </field>
+        </record>
+
+        <record id = "view_student_tree"  model="ir.ui.view">
+            <field name="name">view.student.tree</field>
+            <field name = "model">garage.customer</field>
+            <field name = "arch" type = "xml">
+                    <tree>
+                        <field name = "sequence" widget = "handle"/>
+                        <field name ="name"/>
+                        <field name = "age"/>
+                        <field name = "active" widget = "boolean_togle"/>
+                        <field name ="birthdate"/>
+                        <field name = "gender"/>
+                    </tree>
+            </field>
+        </record>
+
+<!--    search view-->
+
+<!--    <record id = "view_customer_search" model="ir.ui.view">-->
+<!--            <field name="name">view.student.search</field>-->
+<!--            <field name = "model">garage.customer</field>-->
+<!--            <field name = "arch" type = "xml">-->
+<!--                    <search>-->
+<!--                        <field name = "name"/>-->
+
+<!--                        <field name = "age"/>-->
+<!--                        <field name = "gender"/>-->
+<!--                        <filter name = "fil_gender_male" string = "Male" domain = "[('gender','=','male')]"/>-->
+<!--                        <filter name = "fil_gender_female" string = "Female" domain = "[('gender','=','female')]"/>-->
+<!--                        <filter name = "fil_active_customer" string = "Active Customer" domain = "[('active','=',True)]"/>-->
+<!--                        <filter name = "fil_archive_customer" string = "Archive Customer" domain = "[('active','=',False)]"/>-->
+
+<!--&lt;!&ndash;                        <adding the group by gender>&ndash;&gt;-->
+
+<!--                        <filter name = "grp_by_gender" string = "Gender" context = "{'group_by:'gender'}"/>-->
+<!--                    </search>-->
+<!--            </field>-->
+<!--    </record>-->
+    <record id = "action_customer" model = "ir.actions.act_window">
+        <field name="name"> Customer</field>
+        <field name = "res_model">garage.customer</field>
+        <field name = "view_mode">tree,form</field>
+    </record>
+
+
+<!--&lt;!&ndash;    action OF MALE STUDENT&ndash;&gt;-->
+<!--    <record id = "action_student_male" model = "ir.action.act_window">-->
+<!--        <field name = "name">Males</field>-->
+<!--        <field name = "res_model">garage.customer</field>-->
+<!--        <field name = "view_mode">tree,form</field>-->
+<!--        <field name = "domain">[('gender','=','male')]</field>-->
+<!--        <field name = "context">{'default_gender':'male'}</field>-->
+<!--    </record>-->
+
+<!--    <record id = "action_student_female" model = "ir.action.act_window">-->
+<!--        <field name = "name">Males</field>-->
+<!--        <field name = "res_model">garage.customer</field>-->
+<!--        <field name = "view_mode">tree,form</field>-->
+<!--        <field name = "domain">[('gender','=','female')]</field>-->
+<!--        <field name = "context">{'default_gender':'female'}</field>-->
+<!--    </record>-->
+
+
+    <menuitem id = "menu_garage" name = 'Garage'/>
+    <menuitem id = "menu_customer" name="All customer" parent = "menu_garage"/>
+    <menuitem id ="menu_more" name ="More" parent="menu_garage" sequence = "100"/>
+    <menuitem id =  "menu_customer_customer" action = "action_customer" parent = "menu_customer"/>
+
+</odoo>
