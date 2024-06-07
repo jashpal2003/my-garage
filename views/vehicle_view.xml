@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_vehicle_form" model="ir.ui.view">
+        <field name="name">view.vehicle.form</field>
+        <field name="model">garage.vehicle</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="brand_id"/>
+                        <field name="name"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_vehicle_tree" model="ir.ui.view">
+        <field name="name">view.vehicle.tree</field>
+        <field name="model">garage.vehicle</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="brand_id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+<!--    <record id="view_car_form" model="ir.ui.view">-->
+<!--        <field name="name">view.car.form</field>-->
+<!--        <field name="model">garage.car</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                        <field name="name"/>-->
+<!--                        <field name="brand"/>-->
+<!--                        <field name="milage"/>-->
+
+<!--                    </group>-->
+<!--                </sheet>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record id="view_vehicle_tree" model="ir.ui.view">-->
+<!--        <field name="name">view.car.tree</field>-->
+<!--        <field name="model">garage.car</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree>-->
+
+<!--                <field name="name"/>-->
+<!--                <field name="brand"/>-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="action_vehicle" model="ir.actions.act_window">
+        <field name="name">Vehicle</field>
+        <field name="res_model">garage.vehicle</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_vehicle" action="action_vehicle" parent="menu_garage"/>
+
+<!--    <record id="view_brand_form" model="ir.ui.view">-->
+<!--        <field name="name">view.brand.form</field>-->
+<!--        <field name="model">garage.brand</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                        <field name="name"/>-->
+<!--&lt;!&ndash;                        <field name="company_id"/>&ndash;&gt;-->
+<!--                    </group>-->
+<!--                </sheet>-->
+<!--            </form>-->
+<!--        </field>-->
+
+
+
+<!--    </record>-->
+
+        <record id="view_brand_form" model="ir.ui.view">
+        <field name="name">view.brand.form</field>
+        <field name="model">garage.brand</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name = "logo" widget="image"/>
+
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_brand_tree" model="ir.ui.view">
+        <field name="name">view.brand.tree</field>
+        <field name="model">garage.brand</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name = "logo" />
+<!--                <field name="company_id"/>-->
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <record id = "view_brand_kanban" model = "ir.ui.view">
+        <field name = "name">garage.brand.kanban</field>
+        <field name = "model">garage.brand</field>
+        <field name="arch" type="xml">
+            <kanban string = "vehicle kanban" class ="o_res_partner_kanban">
+                <field name ="id"/>
+                <field name = "name"/>
+
+                <templates>
+                    <t t-name = "kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <img alt = "Avatar" t-att-src="kanban_image('garage.brand','logo',record.id.raw_value)" class="o_image_90_max" height="90" width = "90"/>
+
+                        </div>
+                        <ul>
+                            <li>
+                                Company :<field name = "name"/>
+                            </li>
+                        </ul>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+
+    <record id="action_brand" model="ir.actions.act_window">
+        <field name="name">Brand</field>
+        <field name="res_model">garage.brand</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <menuitem id="menu_brand" action="action_brand" parent="menu_garage"/>
+<!--    <record id="view_maintenance_form" model="ir.ui.view">-->
+<!--        <field name="name">view.maintenance.form</field>-->
+<!--        <field name="model">garage.maintenance</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <sheet>-->
+<!--                    <group>-->
+<!--                         <notebook>-->
+<!--                             <page name="pg_exam" string="Exam">-->
+<!--                                 <field name="vehicle_ids"/>-->
+<!--                            <group>-->
+<!--                                <field name="total_obt_marks"/>-->
+<!--                                <field name="total_marks"/>-->
+<!--                            </group>-->
+
+<!--                        </page>-->
+<!--                         </notebook>-->
+
+<!--&lt;!&ndash;                        <field name="company_id"/>&ndash;&gt;-->
+<!--                    </group>-->
+<!--                </sheet>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--        <notebook>-->
+<!--            <page name="pg_exam" string="Exam">-->
+<!--                <field name="exam_ids"/>-->
+<!--                <group>-->
+<!--                    <field name="total_obt_marks"/>-->
+<!--                    <field name="total_marks"/>-->
+<!--                </group>-->
+<!--            </page>-->
+<!--        </notebook>-->
+
+
+
+<!--    </record>-->
+
+<!--    <record id="view_maintenance_tree" model="ir.ui.view">-->
+<!--        <field name="name">view.maintenance.tree</field>-->
+<!--        <field name="model">garage.maintenance</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree>-->
+<!--                <field name="name"/>-->
+<!--&lt;!&ndash;                <field name="company_id"/>&ndash;&gt;-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+</odoo>

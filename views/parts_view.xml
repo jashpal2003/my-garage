@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id  = "view_parts_form" model="ir.ui.view">
+        <field name="name">view.parts.form</field>
+        <field name="model">garage.parts</field>
+        <field name= "arch" type = "xml">
+            <form>
+<!--                <button name="create_rec" string="Create" type="object"/>-->
+                <sheet>
+                    <group>
+
+
+                        <field name = "image"/>
+
+
+
+                        <field name="name"/>
+                        <field name ="price"/>
+                        <field name ="qty"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_parts_tree" model="ir.ui.view">
+        <field name ="name">view.parts.tree</field>
+        <field name ="model">garage.parts</field>
+        <field name  = "arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name ="name"/>
+                <field name= "qty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_parts" model="ir.actions.act_window">
+        <field name = "name">parts</field>
+        <field name = "res_model">garage.parts</field>
+        <field name= "view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_parts"  action="action_parts" parent="menu_more"/>
+</odoo>

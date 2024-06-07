@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id  = "view_department_form" model="ir.ui.view">
+        <field name="name">view.department.form</field>
+        <field name="model">garage.department</field>
+        <field name= "arch" type = "xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_department_tree" model="ir.ui.view">
+        <field name ="name">view.department.tree</field>
+        <field name ="model">garage.department</field>
+        <field name  = "arch" type="xml">
+            <tree>
+                <field name ="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_department" model="ir.actions.act_window">
+        <field name = "name">department</field>
+        <field name = "res_model">garage.department</field>
+        <field name= "view_mode">tree,form</field>
+    </record>
+    <menuitem id="menu_department"  action="action_department" parent="menu_more"/>
+</odoo>

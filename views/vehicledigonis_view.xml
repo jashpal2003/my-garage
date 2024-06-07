@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_vehicle_customer" model="ir.actions.act_window">
+        <field name="name">Customer</field>
+        <field name="res_model">garage.customer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id = "view_vehicledigonis_form"  model = "ir.ui.view">
+        <field name = "name">view.vehicledigonis.form</field>
+        <field name="model">garage.vehicledigonis</field>
+        <field name = "arch" type = "xml">
+            <form>
+                 <header>
+                    <button name="%(action_customer)d" type="action" string="Customewwwww"/>
+                </header>
+                <sheet>
+
+
+                    <div name="button_box" class="oe_button_box">
+                        <button class="oe_stat_button"
+                                type="action"
+                                name="%(action_vehicle_customer)d"
+                                context="{'default_vehicledigonis_id':active_id,'search_default_standard_id':active_id}"
+                                string="Customer"
+                                icon="fa-users"/>
+                    </div>
+
+                            <button name="link_record" string="link the reocrd" type="object"/>
+
+                    <group>
+                        <field name="name"/>
+                        <field name = "vehicle_problem"/>
+<!--                        <field name = "vehicle"/>-->
+                            <field name = "vehicle_brand"/>
+                        <field name ="vehicle_model"/>
+                        <field name = "additional_box"/>
+
+<!--                        <field name="service_needed"/>-->
+
+                    </group>
+                    <notebook>
+                        <page name = "service_needed">
+                            <field name = "service_needed"/>
+<!--The many2many field options should be listed as checkboxes.-->
+<!--                            <field name = "service_needed"  widget="many2many_checkboxes"/>-->
+                        </page>
+
+<!--                        Add a boolean field and a text field. Put the text field in a separate page. Now-->
+<!--when the boolean field is checked then the page should be visible else it should be-->
+<!--invisible.-->
+                        <page name = "parts_needed_id">
+                            <field name = "parts_needed_id"/>
+
+
+                        </page>
+                        <page name="summary" attrs="{'invisible':[('additional_box','=',False)]}">
+                            <field name ="summary_text"/>
+                        </page>
+                    </notebook>
+                    <group>
+                        <field name = "parts_price" string = "total price of parts"/>
+                        <field name = "service_price" string="total price of service"/>
+                        <field name = "total_amount" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id ="view_vehicledigonis_tree" model = "ir.ui.view">
+        <field name= "name">view.vehicledigonis.tree</field>
+        <field name="model">garage.vehicledigonis</field>
+        <field name = "arch" type = "xml">
+            <tree>
+
+                <field name = "name"/>
+<!--                <field name ="vehicle_company"/>-->
+<!--                <field name ="vehicle_model"/>-->
+                <field name = "vehicle_problem"/>
+                <field name = "parts_price" string = "price for parts" avg ="Avg"/>
+                <field name = "service_price" string = "price for service"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id = "view_customer_parts_form" model = "ir.ui.view">
+        <field name = "name">view.parts.form</field>
+        <field name = "model">customer.parts</field>
+        <field name="arch" type="xml">
+            <form>
+                <button name="verify_update" string = "compute" type="object"/>
+                <group>
+                    <field name="parts_id"/>
+                    <field name="qty"/>
+                    <field name = "price"/>
+                </group>
+            </form>
+        </field>
+
+    </record>
+
+    <record id = "view_customer_parts_tree" model = "ir.ui.view">
+        <field name="name">view.parts.tree</field>
+        <field name="model">customer.parts</field>
+        <field name = "arch" type="xml">
+            <tree>
+                <field name="parts_id"/>
+                <field name="price"/>
+                <field name="qty"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
+    <record id = "action_vehicledigonis" model="ir.actions.act_window">
+        <field name="name">vehicledigonis</field>
+        <field name = "res_model">garage.vehicledigonis</field>
+        <field name ="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_vehicledigonis" action="action_vehicledigonis" parent ="menu_garage"/>
+
+
+
+</odoo>
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id = "view_billing_form"  model = "ir.ui.view">
+        <field name="name">view.billing.form</field>
+        <field name="model">garage.billing</field>
+        <field name="arch" type ="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name = "vehicle_brand"/>
+                            <field name = "vehicle_model"/>
+
+
+                        </group>
+
+                         <notebook>
+                                <page name = "services_pg" string ="service taken">
+                                    <field name="service"/>
+                                </page>
+                                <page name="parts_pg" string = "parts used">
+                                    <field name = "parts"/>
+                                </page>
+                            </notebook>
+<!--                            <field name = "currency_id"/>-->
+
+                            <field name = "amount_pay"/>
+
+<!--                            <field name = "final_fees_amount" widget="monetary" />-->
+
+                    </sheet>
+
+                </form>
+        </field>
+    </record>
+    <record id = "view_billing_tree" model="ir.ui.view">
+        <field name="name">view.billing.tree</field>
+        <field name="model">garage.billing</field>
+        <field name ="arch" type = "xml">
+            <tree>
+                <field name="name"/>
+                <field name = "vehicle_brand"/>
+                <field name = "vehicle_model"/>
+<!--                <field name = "vehicle"/>-->
+
+
+            </tree>
+
+
+        </field>
+    </record>
+
+
+    <record id = "action_billing" model="ir.actions.act_window">
+        <field name = "name">billing</field>
+        <field name = "res_model">garage.billing</field>
+        <field name = "view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_billing" action="action_billing" parent="menu_more"/>
+</odoo>
+
+
+
+
+
+
+
+
+
+
+
+

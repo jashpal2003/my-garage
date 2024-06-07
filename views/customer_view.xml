@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <odoo>
+        <record id="view_customer_form" model="ir.ui.view">
+            <field name = 'name'>view.customer.form</field>
+            <field name="model">garage.customer</field>
+            <field name ="arch" type = "xml">
+                    <form>
+                        <header><h1>Customer form</h1>
+<!--                            .Print the current language of the system.-->
+                            <button name ="print_student" string = "print" type = "object"/>
+                            <button name="create_record" string="Create" type="object"/>
+                            <button name="update_record" string="update" type="object"/>
+                            <button name="partial_remove" string="partial_remove" type="object"/>
+                            <button name="partial_remove2" string="remove all" type="object"/>
+                            <button name="search_record" string="search all" type="object"/>
+                            <button name="browse_record" string="browse all" type="object"/>
+                            <button name="copy" string="Copy" type="object"/>
+                            <button name="add_seq" string="sequence_add" type="object"/>
+
+
+                    <field name="state" widget="statusbar" options="{'clickable':1}" /></header>
+<!--                        <field name = "state" widget = "statusbar" options = "{'clickable':1" statusbar_visible = "applied,joined,left"/>-->
+                        <sheet>
+                            <div class = "oe_title">
+                                <h1>
+                                    <field name = "reg_no" readonly = "1"/>
+                                </h1>
+                            </div>
+
+                            <widget name = "web_ribbon" title = "Active" bg_color = "bg-danger" attrs = "{'invisible':[('active','=',True)]}"/>
+                            <widget name = "web_ribbon" title = "Archived" bg_color = "bg-success" attrs = "{'invisible':[('active','=',False)]}"/>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <header>
+                                        <h3>Detail  of customer</h3>
+
+                                    </header>
+
+                                    <group>
+                                        <field name="name_title"/>
+                                        <field name="name"/>
+<!--                                        Add a character field and an integer field. When there is a value in the character-->
+<!--field the integer field should be mandatory else readonly.-->
+
+                                        <field name="age" attrs="{'readonly':[('name','=','')],'required':[('name','!=','')]}"/>
+                                        <field name="active" invisible = "1"/>
+                                        <field name="birthdate"/>
+                                        <field name="gender"/>
+                                        <field name="customer_code"/>
+
+<!--                                        <field name="password" password = "*"/>-->
+                                        <field name="email" widget = "email"/>
+<!--                                        <field name="url" string = "website" widget = "url"/>-->
+
+                                        <field name="priority" widget = "priority"/>
+
+                                        <field name="phone" widget = "phone/"/>
+                                        <field name="sequence"/>
+<!--                                        <field name="sign_in"/>-->
+                                        <field name = "howufind"/>
+                                        <field name = "preferred_contact"/>
+                                    </group>
+                                </div>
+                                <div class="col col-md-6">
+                                      <header>
+                                        <h3>Detail  of Vehicle</h3>
+
+                                    </header>
+                                        <group>
+<!--                                            company name -->
+<!--                                            model name-->
+<!--                                            vehicle type-->
+                                            <field name ="description_of_problem"/>
+<!--                                            service u need-->
+<!--                                             <field name="document" filename = "file_name"/>-->
+                                            <field name="photo" widget="image"/>
+
+<!--                                            <field name="cars"/>-->
+                                            <field name="company_id" string="Vehicle_Brand" options="{'no_create':1, 'no_open':1}"/>
+                                            <field name="vehicle_model_id" string="Vehicle_Brand"/>
+
+
+
+
+
+
+                                        </group>
+                                </div>
+
+                            </div>
+                            <notebook>
+<!--                                <page name ="pg_cars" string ="cars detail">-->
+<!--                                <field name ="cars"/>-->
+<!--                                </page>-->
+                                <page name ="maintenance_pg" string="maintenace detail">
+                                <field name ="maintenance_ids"/>
+                                </page>
+                                <page name = "vehicle_info" string = "Vehicle Information">
+                                    <group>
+                                        <field name = "vehicle_type"/>
+                                    <field name = "color"/>
+                                    <field name = "horse_power"/>
+                                    <field name = "mileage"/>
+                                    <field name = "Fuel_type"/>
+                                    <field name = "model_year"/>
+
+                                    </group>
+
+
+                                </page>
+
+                            </notebook>
+
+                        </sheet>
+<!--                        <div class="oe_chatter">-->
+<!--                            <field name="message_follower_ids"/>-->
+<!--&lt;!&ndash;                            <field name ="activity_ids"/>&ndash;&gt;-->
+<!--                            <field name ="message_ids"/>-->
+<!--                        </div>-->
+                    </form>
+            </field>
+        </record>
+
+
+
+
+
+
+
+    <record id="view_maintenance_form" model="ir.ui.view">
+        <field name="name">view.maintenance.form</field>
+        <field name="model">garage.maintenance</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name = "id"/>
+                        <field name="date"/>
+                        <field name="description"/>
+                        <field name="cost"/>
+
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_maintenance_tree" model="ir.ui.view">
+        <field name="name">view.maintenance.tree</field>
+        <field name="model">garage.maintenance</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name ="id"/>
+                <field name="description"/>
+
+                <field name="cost"/>
+<!--&lt;!&ndash;                -->
+            </tree>
+        </field>
+    </record>
+
+
+
+
+
+        <record id = "view_customer_kanban" model ="ir.ui.view">
+            <field name = "name">garage.customer.kanban</field>
+            <field name = "model">garage.customer</field>
+            <field name = "arch" type="xml">
+                <kanban string="car Kanban" class ="o_res_partner_kanban">
+                    <field name = "id"/>
+<!--                    <field name ="name"/>-->
+                    <field name ="age"/>
+                        <field name ="gender"/>
+<!--                    <field name ="photo"/>-->
+                    <templates>
+                        <t t-name ="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+
+
+                                <img alt = "Avatar" t-att-src ="kanban_image('garage.customer','photo',record.id.raw_value)" class="o_image_64_max" height="64" width = "64"/>
+                            </div>
+
+                                    <ul>
+                                        <li>
+                                           Name:- <field name ="name"/>
+                                        </li>
+                                        <li>
+                                        Age :-<field name = "age"/>
+                                        </li>
+                                        <li>
+                                            Gender :- <field name = "gender"/>
+                                        </li>
+
+
+                                    </ul>
+
+                        </t>
+                    </templates>
+
+
+
+
+                </kanban>
+            </field>
+
+        </record>
+
+        <record id = "view_customer_tree"  model="ir.ui.view">
+            <field name="name">view.customer.tree</field>
+            <field name = "model">garage.customer</field>
+            <field name = "arch" type = "xml">
+                    <tree>
+                        <field name ="reg_no"/>
+                        <field name = "sequence" widget = "handle"/>
+                        <field name ="name"/>
+                        <field name = "age"/>
+                        <field name = "active" widget = "boolean_togle"/>
+                        <field name ="birthdate" readonly = "1"/>
+                        <field name = "gender"/>
+                         <field name = "vehicle_type"/>
+                        <field name = "color"/>
+                        <field name = "horse_power"/>
+                        <field name = "mileage"/>
+                        <field name = "Fuel_type"/>
+                        <field name = "model_year"/>
+
+                    </tree>
+            </field>
+        </record>
+
+<!--    search view-->
+
+        <record id = "view_customer_search" model="ir.ui.view">
+            <field name="name">view.student.search</field>
+            <field name = "model">garage.customer</field>
+            <field name = "arch" type = "xml">
+                    <search>
+                        <field name = "name"/>
+
+                        <field name = "age"/>
+                        <field name = "gender"/>
+
+<!--5. Create atleast two filters to filter the records on your list view.-->
+                        <filter name="fil_gender_male" string="Male" domain="[('gender','=','male')]"/>
+                        <filter name="fil_gender_female" string="Female" domain="[('gender','=','female')]"/>
+                        <filter name = "fil_active_customer" string = "Active Customer" domain = "[('active','=',True)]"/>
+
+<!--                        Add a filter for date field which gives specific criteria for filtering.-->
+                        <filter name = "my_birthday" string = "Jashpal birthday" domain="[('birthdate','=',context_today().strftime('%Y-%m-%d'))]"/>
+
+
+<!-- Create atleast two group by to group the records.-->
+                       <filter name="grp_by_gender" string="Gender" context="{'group_by':'gender'}"/>
+                        <filter name="grp_by_standard" string="Age" context="{'group_by':'age'}"/>
+
+                        <filter name="grp_by_date" string ="Date_grp" context="{'group_by':'birthdate:month'}"/>
+
+
+<!--&lt;!&ndash;                        <adding the group by gender>&ndash;&gt;-->
+
+<!--                        <filter name = "grp_by_gender" string="Gender" context="{'group_by:'gender'}"/>-->
+                    </search>
+            </field>
+
+<!--Now on the action where you have put domain we want the field of the domain to-->
+<!--be assigned by default but only when the view is opened from that action.-->
+
+        </record>
+    <record id = "action_customer" model = "ir.actions.act_window">
+        <field name="name"> Customer</field>
+        <field name = "res_model">garage.customer</field>
+        <field name = "view_mode">kanban,tree,form</field>
+<!--        When an action is called need to have a default group by on your state field.-->
+
+        <field name ="context">{'search_default_grp_by_gender':1}</field>
+
+    </record>
+    <record id = "action_maintenance" model = "ir.actions.act_window">
+            <field name="name">MaintenanceRecord</field>
+            <field name = "res_model">garage.maintenance</field>
+            <field name = "view_mode">tree,form</field>
+    <!--        When an action is called need to have a default group by on your state field.-->
+
+        </record>
+
+<!--Now on the action where you have put domain we want the field of the domain to-->
+<!--be assigned by default but only when the view is opened from that action.-->
+
+<!--4. Create an action and add a domain on this action to display specific records.-->
+<!--&lt;!&ndash;    action OF MALE STUDENT&ndash;&gt;-->
+    <record id = "action_student_male" model="ir.actions.act_window">
+        <field name = "name">Males</field>
+        <field name = "res_model">garage.customer</field>
+        <field name = "view_mode">tree,form</field>
+        <field name = "domain">[('gender','=','male')]</field>
+        <field name = "context">{'default_gender':'male'}</field>
+    </record>
+
+<!--    <record id = "action_student_female" model = "ir.action.act_window">-->
+<!--        <field name = "name">Males</field>-->
+<!--        <field name = "res_model">garage.customer</field>-->
+<!--        <field name = "view_mode">tree,form</field>-->
+<!--        <field name = "domain">[('gender','=','female')]</field>-->
+<!--        <field name = "context">{'default_gender':'female'}</field>-->
+<!--    </record>-->
+
+
+    <menuitem id = "menu_garage" name = 'Garage'/>
+    <menuitem id = "menu_customer" name="All customer" parent = "menu_garage"/>
+    <menuitem id = "menu_maintenance" name="maintenance" parent = "menu_garage"/>
+    <menuitem id ="menu_more" name ="More" parent="menu_garage" sequence = "100"/>
+    <menuitem id =  "menu_customer_customer" action = "action_customer" parent = "menu_customer"/>
+
+</odoo>

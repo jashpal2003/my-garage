@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_garage_customer_owner,access.garage.customer.owner,model_garage_customer,group_garage_owner,1,1,1,1
+access_garage_customer_user,access.garage.customer.user,model_garage_customer,group_garage_user,1,1,1,0
+
+access_garage_vehicle_owner,access.garage.vehicle.owner,model_garage_vehicle,group_garage_owner,1,1,1,1
+access_garage_employee_owner,access.garage.employee.owner,model_garage_employee,group_garage_owner,1,1,1,1
+access_garage_services_owner,access.garage.services.owner,model_garage_services,group_garage_owner,1,1,1,1
+access_garage_parts_owner,access.garage.parts.owner,model_garage_parts,group_garage_owner,1,1,1,1
+access_garage_billing_owner,access.garage.billing.owner,model_garage_billing,group_garage_owner,1,1,1,1
+access_garage_brand_owner,access.garage.brand.owner,model_garage_brand,group_garage_owner,1,1,1,1
+
+access_garage_brand_owner,access.garage.brand.owner,model_garage_brand,group_garage_owner,1,1,1,1
+access_garage_vehicledigonis_owner,access.garage.vehicledigonis.owner,model_garage_vehicledigonis,group_garage_owner,1,1,1,1
+access_garage_department_owner,access.garage.department.owner,model_garage_department,group_garage_owner,1,1,1,1
+access_garage_maintenance_owner,access.garage.maintenance.owner,model_garage_maintenance,group_garage_owner,1,1,1,1
+access_customer_parts_owner,access.customer.parts.owner,model_customer_parts,group_garage_owner,1,1,1,1
